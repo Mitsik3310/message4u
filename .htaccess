@@ -1,0 +1,17 @@
+### PROTECT FILES ###
+<FilesMatch "\.(htaccess|htpasswd|ini|fla|psd|log|sh)$">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+
+RewriteEngine on
+RewriteRule sklep-komputerowy-mitsik index.html
+RewriteRule kategorie pages/categories.html
+RewriteRule koszyk pages/cart.html
+RewriteRule twoje-konto pages/account.html
+
+
+
+
+
+
