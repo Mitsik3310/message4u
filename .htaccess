@@ -10,6 +10,10 @@ RewriteRule kategorie pages/categories.html
 RewriteRule koszyk pages/cart.html
 RewriteRule twoje-konto pages/account.html
 
+ErrorDocument 404 404.html
+
+
+
 
 
 
