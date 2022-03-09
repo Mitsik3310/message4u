@@ -2,8 +2,8 @@ html {
     scroll-behavior: smooth;
 }
 body{
-    background-color: #1B1F25;
-    color: white;
+    background-color: #F1F1F1;
+    color: #1B1F25;
     position: relative;
     margin: auto;
     font-weight:normal; 
@@ -34,6 +34,7 @@ a {
 }
 h1, h2, h3, h4, h5, h6{
 	font-family:Georgia, "Times New Roman", Times, serif;
+    font-weight: 300;
 }
 h1{
 	font-size:22px; 
@@ -74,7 +75,7 @@ h2{
   display: none;
 }
 .numbertext {
-  color: #ffffff;
+  color: #FFFFFF;
   font-size: 15px;
   padding: 8px 12px;
   position: absolute;
@@ -114,6 +115,7 @@ h2{
     transform: translate(-50%, 0%);  
     z-index: 2;
     text-align: justify;
+    color: #FFFFFF
 }
 #main_button{
     width:150px;
@@ -146,7 +148,6 @@ h2{
     left: 65%;
     top: 1%;
     z-index: 3;
-    /* transform: translate(1380px, -710px);  */
 }
 .log{
     border: none;
@@ -207,13 +208,13 @@ main{
 }
 #righttoimage s{
     font-size: 25px;
-    color:gray;
+    color:#1B1F25;
 }
 #righttoimage p{
     font-size: 35px;
-    background: #3f5efb; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #3f5efb, #fc466b); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #3f5efb, #fc466b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #3f5efb; 
+    background: -webkit-linear-gradient(to right, #3f5efb, #fc466b); 
+    background: linear-gradient(to right, #3f5efb, #fc466b); 
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -240,7 +241,7 @@ main{
 }
 #hot_shot a{
     width: 250px;
-    color: white;
+    color: #1B1F25;
     text-decoration: none;
     position: absolute;
     top: 100%;
@@ -282,7 +283,7 @@ main{
     top: 500%;
     transform: translate(-50%, 200%);
     text-align: center;
-    font-weight: bold;
+    font-weight: 250;
     width: 400px;
 }
 #timer_hour{
@@ -339,37 +340,6 @@ main{
     transform: translate(233px, 58px);
     z-index: 2;
 }
-#hot_shot .slider{
-    -webkit-appearance: none;  
-    appearance: none;
-    width: 100%;
-    height: 20px; 
-    background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);
-    outline: none; 
-    border-radius: 10px;
-    opacity: 0.7; 
-    -webkit-transition: 0.5s; 
-    transition: opacity 0.5s;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 350%);
-}  
-#hot_shot .slider::-webkit-slider-thumb{
-    -webkit-appearance: none;
-    appearance: none;
-    width: 15px;
-    height: 15px;
-    background: lightblue;
-    border-radius: 5px;
-    cursor: pointer;
-    border-radius: 4px;
-    cursor: not-allowed;
-}
-#hot_Shot .slider:hover {
-    opacity: 1;
-    cursor: not-allowed; 
-}
-
 
 #title_section{
     position: absolute;
@@ -427,7 +397,8 @@ main{
     height: 170px;
     width: 198px;
     position: absolute;
-    transform: translate(37px, 5px);
+    margin-left: 37px;
+    margin-top: 5px;
 }
 #bestsellers h3{
     font-size: 20px;
@@ -440,7 +411,7 @@ main{
     position: relative;
     text-align: left;
     padding: 15px;
-    color: gray;
+    color: #1B1F25;
     font-size: 15px;
 }
 #name_price{
@@ -453,22 +424,113 @@ main{
 }
 #bestsellers a{
     text-decoration: none;
-    color: white;
+    color: #1B1F25;
     width: 275px;
     height: 240px;
 }
 #bestsellers a:hover{
-    color: white;
+    color: #1B1F25;
     text-decoration: none;
 }
 
 #articles{
+    width: 1800px;
     position: absolute;
-    transform: translate(-400px, 25px);
+    transform: translate(-440px, 25px);
     margin-top: 25px;
     border-top: 0.5px solid rgba(143, 133, 133, 0.2);
 }
+#art{
+    margin-top: 10px;
+}
+.article_cell{
+    width: 420px;
+    height: 350px;
+    margin-left: 25px;
+    float: left;
+}
+.article_cell:hover{
+    cursor: pointer;
+}
+.image_article{
+    position: relative;
+    margin-top: 15px;
+}
+.img_article{
+    width: 175px;
+    height: 175px;
+    border: 1px solid lightgray;
+    border-radius: 15px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 122.5px;
+    padding-right: 122.5px;
+}
+.under_img_article{
+    position: relative;
+    margin-top: 10px;
+    line-height: 1.5em;
+}
+.header_article{
+    font-size: 22px;
+    font-weight: 250;
+}
+.subtitle_article{
+    font-size: 12px;
+    text-align: justify;
+    font-weight: normal;
+}
+.small_text{
+    font-size: 11px;
+    font-weight: 150;
+}
 
+.above_section{
+    border-top: 0.5px solid rgba(143, 133, 133, 0.2);
+    margin-bottom: 10px;
+}
+#they_paid_us_so_we_recommend_that_shit{
+    position: absolute;
+    transform: translate(-435px, 440px);
+    width: 1780px;
+}
+.rec_cell{
+    float: left;
+    width: 280px;
+    height: 285px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    margin-left: 16px;
+    display: block;
+}
+.rec_cell:hover{
+    cursor: pointer;
+}
+.rec_img{
+    z-index: 5;
+    position: relative;
+    margin-left: 23px;
+    margin-top: 15px;
+}
+.rec_under_img{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    line-height: 1.5em;
+}
+.rec_title{
+    font-size: 20px;
+    font-weight: 250;
+}
+.rec_old_price{
+    font-size: 14px;
+    color: darkgrey;
+    font-weight: normal;
+}
+.rec_new_price{
+    font-size: 15px;
+    font-weight: normal;
+}
 
 .popup{
     position: fixed;
@@ -507,7 +569,6 @@ main{
     transition: all 0.3s ease-in-out 0s;
 }
 
-
 #test{
     text-shadow: 
     2px 2px 0px black,
@@ -516,7 +577,6 @@ main{
     2px -2px 0px black;
 }
 .zoom:hover{
-    margin-left: 38px;
     transform: scale(1.3);  
     transition: transform 0.5s, filter 0.5s ease-out;
     z-index: 5;
@@ -528,4 +588,26 @@ main{
 }
 button {
 	transition: background-color 1000ms, color 1000ms;
+}
+#sell-progress{
+    width: 100%;
+    height: 20px; 
+    outline: none; 
+    border-radius: 5px;
+    opacity: 0.7; 
+    -webkit-transition: 0.5s; 
+    transition: opacity 0.5s;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 350%);
+    
+}
+progress[value]::-webkit-progress-value {
+    background-image:
+         -webkit-linear-gradient(-45deg, 
+                                 transparent 33%, rgba(0, 0, 0, 0) 33%, 
+                                 rgba(0,0, 0, 0) 66%, transparent 66%),
+         -webkit-linear-gradient(left, #FC466B, #3F5EFB);
+      border-radius: 5px; 
+      background-size: 35px 20px, 100% 100%, 100% 100%;
 }
