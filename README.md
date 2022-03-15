@@ -1,2 +1,0 @@
-# sklep
-Sklep
