@@ -1,0 +1,29 @@
+### PROTECT FILES ###
+<FilesMatch "\.(htaccess|htpasswd|ini|fla|psd|log|sh)$">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+
+RewriteEngine on
+RewriteRule sklep-komputerowy-mitsik index.html
+RewriteRule kategorie pages/categories.html
+RewriteRule koszyk pages/cart.html
+RewriteRule twoje-konto pages/account.html
+
+ErrorDocument 400 pages/error/400.html
+ErrorDocument 403 pages/error/403.html
+ErrorDocument 404 pages/error/404.html
+ErrorDocument 410 pages/error/410.html
+ErrorDocument 411 pages/error/411.html
+ErrorDocument 414 pages/error/414.html
+ErrorDocument 500 pages/error/500.html
+ErrorDocument 502 pages/error/502.html
+ErrorDocument 503 pages/error/503.html
+ErrorDocument 505 pages/error/505.html
+
+
+
+
+
+
+
