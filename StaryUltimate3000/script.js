@@ -20,6 +20,7 @@ const increaseScore = () => {
 
 const addAtribute = () => {
   setTimeout(createAtribute, Math.random());
+  setTimeout(createAtribute, Math.random());
 };
 
 const catchAtribute = function () {
@@ -67,7 +68,7 @@ const decresePromile = () => {
 
 };
 
-const startGame = () => setInterval(decresePromile, 500);
+const startGame = () => setInterval(decresePromile, 550);
 
 
 
