@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mapa świata z Twoim starym</title>
+  <link rel="icon" type="image/x-icon" href="../media/ico.png">
+  <style>
+    body { margin: 0; padding: 0; background-color: #F7CAC9; color: #5B5EA6; }
+    #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+  </style>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet' />
+
+</head>
+<body>
+    <h1 style="text-align: center;">
+        Na poniższej mapie zaznaczono miejsce przebywania twojego starego.
+    </h1>
+<div id='map' style="height: 95%; position: absolute; top: 8%;"></div>
+<script>
+    
+  mapboxgl.accessToken = 'pk.eyJ1IjoibWl0c2lrMzMxMCIsImEiOiJjbGZia3p0OGwybDg5NDFvMWNzMjZ3aGxyIn0.gI_pfKEYux25YX84d2Y2rA';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v12', // ID twojego stylu
+    center: [104.9910, 12.5657], // pozycja Twojego starego w Kambodży
+    zoom: 2 // początkowy zoom
+  });
+  
+  map.on('load', () => {
+    map.addLayer({
+        id: 'terrain-data',
+        type: 'line',
+        source: {
+            type: 'vector',
+            url: 'mapbox://mapbox.mapbox-terrain-v2'
+        },
+        'source-layer': 'contour'
+    });
+  });
+
+  var marker = new mapboxgl.Marker()
+    .setLngLat([104.2137, 12.2137]) // pozycja Twojego starego w Kambodży
+    .addTo(map);
+
+  // Automatyczne dopasowanie zoomu do markera
+  var bounds = new mapboxgl.LngLatBounds();
+  bounds.extend(marker.getLngLat());
+  map.fitBounds(bounds, { padding: 100 });
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+body{
+    background-color: #F7CAC9;
+    width: auto;
+    height: auto;
+    overflow-y: hidden;
+    overflow-x: hidden; 
+    box-sizing: border-box;
+    user-select: none;
+}
+#message{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+h1{
+    text-align: center;
+    color: #5B5EA6;
+    line-height: auto;
+}
+h2{
+    text-align: center;
+    color: #5B5EA6
+}
+#buttons{
+  display: inline-block;
+}
+button {
+    font-size: inherit;
+    padding: 0.75em 1em;
+    background: #F7CAC9;
+    color: #5B5EA6;
+    border: 2px solid #5B5EA6;
+    border-radius: 2em;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
