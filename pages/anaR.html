@@ -1,51 +1,72 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Ana Redżniewicz</title>
-	<meta charset="utf-8">
-	<link rel="icon" type="image/x-icon" href="../media/ico.png">
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			overflow: hidden;
-		}
-		canvas {
-			display: block;
-		}
-	</style>
-</head>
-<body>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-	<script>
-		// Tworzenie sceny i kamery
-		const scene = new THREE.Scene();
-		const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-
-		// Tworzenie renderera
-		const renderer = new THREE.WebGLRenderer();
-		renderer.setSize(window.innerWidth, window.innerHeight);
-		document.body.appendChild(renderer.domElement);
-
-		// Tworzenie geometrii i materiału
-		const geometry = new THREE.BoxGeometry();
-		const textureLoader = new THREE.TextureLoader();
-		const texture = textureLoader.load('https://i.imgur.com/34QH8Ey.jpg');
-		const material = new THREE.MeshBasicMaterial({ map: texture });
-		const cube = new THREE.Mesh(geometry, material);
-		scene.add(cube);
-
-		// Ustawianie pozycji kamery
-		camera.position.z = 5;
-
-		// Funkcja renderująca scenę
-		function animate() {
-			requestAnimationFrame(animate);
-			cube.rotation.x += 0.01;
-			cube.rotation.y += 0.01;
-			renderer.render(scene, camera);
-		}
-		animate();
-	</script>
-</body>
+   <head>
+      <title>Ana Redżniewicz</title>
+      <meta charset="utf-8">
+      <link rel="icon" type="image/x-icon" href="../media/ico.png">
+      <style>
+         body {
+         margin: 0;
+         padding: 0;
+         overflow-x: hidden;
+         }
+         canvas {
+         display: block;
+         }
+		 #myAudio{
+			position:relative;
+			z-index: 1000;
+			visibility: visible;
+		 }
+      </style>
+   </head>
+   <body>
+      <audio id="myAudio" src="../media/shimishimi.wav"></audio>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+      <script>
+         // Tworzenie sceny i kamery
+         const scene = new THREE.Scene();
+         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+         
+         // Tworzenie renderera
+         const renderer = new THREE.WebGLRenderer();
+         renderer.setSize(window.innerWidth, window.innerHeight);
+         document.body.appendChild(renderer.domElement);
+         
+         // Tworzenie geometrii i materiału
+         const geometry = new THREE.BoxGeometry();
+         const textureLoader = new THREE.TextureLoader();
+         const texture = textureLoader.load('https://i.imgur.com/34QH8Ey.jpg');
+         const material = new THREE.MeshBasicMaterial({ map: texture });
+         const cube = new THREE.Mesh(geometry, material);
+         scene.add(cube);
+         
+         // Ustawianie pozycji kamery
+         camera.position.z = 5;
+         
+         // Funkcja renderująca scenę
+         function animate() {
+         	requestAnimationFrame(animate);
+         	cube.rotation.x += 0.01;
+         	cube.rotation.y += 0.01;
+         	renderer.render(scene, camera);
+         }
+         animate();
+         
+         const audio = document.getElementById("myAudio");
+         const playButton = document.createElement("button");
+         playButton.innerHTML = "Play";
+         playButton.addEventListener("click", function() {
+         audio.play();
+         });
+         document.body.appendChild(playButton);
+         
+         const pauseButton = document.createElement("button");
+         pauseButton.innerHTML = "Pause";
+         pauseButton.addEventListener("click", function() {
+         audio.pause();
+         });
+         document.body.appendChild(pauseButton);
+      </script>
+   </body>
 </html>
