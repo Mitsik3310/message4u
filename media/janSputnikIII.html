@@ -48,12 +48,14 @@
   <button id="launchButton">Wystrzel Jana Sputnika III w kosmos</button>
   <audio id="sound" src="pifpaf.wav" loop></audio>
 
-  <script>
+   <script>
     const launchButton = document.getElementById('launchButton');
     const sound = document.getElementById('sound');
 
     launchButton.addEventListener('click', function () {
-      sound.play();
+      if (sound.paused) {
+        sound.play();
+      }
     });
 
     const canvas = document.getElementById('canvas');
@@ -63,8 +65,8 @@
     canvas.height = window.innerHeight;
 
     const spaceship = {
-      x: Math.random() * canvas.width, 
-      y: Math.random() * canvas.height, 
+      x: canvas.width / 2,  
+      y: canvas.height / 2,
       radius: 80,
       dx: 3,
       dy: 3,
@@ -98,13 +100,17 @@
     }
 
     launchButton.addEventListener('click', () => {
-      animateSpaceship();
-      launchButton.style.display = 'none';
+      if (!sound.paused) {
+        animateSpaceship();
+        launchButton.style.display = 'none';
+      }
     });
 
     window.addEventListener('resize', () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      spaceship.x = canvas.width / 2;  
+      spaceship.y = canvas.height / 2; 
     });
   </script>
 </body>
