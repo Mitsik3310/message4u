@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +9,7 @@
       overflow: hidden;
     }
 
-    #space {
+    #background {
       background: url('tlo.jpg') no-repeat center center fixed;
       background-size: cover;
       position: fixed;
@@ -25,7 +24,7 @@
       display: block;
     }
     
-    #button {
+    #launchButton {
         position: absolute;
             top: 50%;
             left: 50%;
@@ -44,27 +43,26 @@
   <title>Jan Sputnik III eksploruje kosmos</title>
 </head>
 <body>
-  <div id="space"></div>
-  <canvas id="myCanvas"></canvas>
-  <button id="button">Wystrzel Jana Sputnika III w kosmos</button>
-  <audio id="audio" src="pifpaf.wav" loop></audio>
+  <div id="background"></div>
+  <canvas id="canvas"></canvas>
+  <button id="launchButton">Wystrzel Jana Sputnika III w kosmos</button>
+  <audio id="sound" src="pifpaf.wav" loop></audio>
 
   <script>
+    const launchButton = document.getElementById('launchButton');
+    const sound = document.getElementById('sound');
 
-    const button = document.getElementById('button');
-    const audio = document.getElementById('audio');
-
-    button.addEventListener('click', function () {
-      audio.play();
+    launchButton.addEventListener('click', function () {
+      sound.play();
     });
 
-    const canvas = document.getElementById('myCanvas');
+    const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const ball = {
+    const spaceship = {
       x: Math.random() * canvas.width, 
       y: Math.random() * canvas.height, 
       radius: 80,
@@ -73,35 +71,35 @@
       image: new Image()
     };
 
-    ball.image.src = 'jan_sputnik.png'; 
+    spaceship.image.src = 'jan_sputnik.png'; 
 
-    function drawBall() {
-      ctx.drawImage(ball.image, ball.x - ball.radius, ball.y - ball.radius, ball.radius * 2, ball.radius * 2);
+    function drawSpaceship() {
+      ctx.drawImage(spaceship.image, spaceship.x - spaceship.radius, spaceship.y - spaceship.radius, spaceship.radius * 2, spaceship.radius * 2);
     }
 
-    function update() {
-      ball.x += ball.dx;
-      ball.y += ball.dy;
+    function updateSpaceship() {
+      spaceship.x += spaceship.dx;
+      spaceship.y += spaceship.dy;
 
-      if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) {
-        ball.dx = -ball.dx;
+      if (spaceship.x + spaceship.radius > canvas.width || spaceship.x - spaceship.radius < 0) {
+        spaceship.dx = -spaceship.dx;
       }
 
-      if (ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) {
-        ball.dy = -ball.dy;
+      if (spaceship.y + spaceship.radius > canvas.height || spaceship.y - spaceship.radius < 0) {
+        spaceship.dy = -spaceship.dy;
       }
     }
 
-    function animate() {
+    function animateSpaceship() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      drawBall();
-      update();
-      requestAnimationFrame(animate);
+      drawSpaceship();
+      updateSpaceship();
+      requestAnimationFrame(animateSpaceship);
     }
 
-    button.addEventListener('click', () => {
-      animate();
-      button.style.display = 'none';
+    launchButton.addEventListener('click', () => {
+      animateSpaceship();
+      launchButton.style.display = 'none';
     });
 
     window.addEventListener('resize', () => {
