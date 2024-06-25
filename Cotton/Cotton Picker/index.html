@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotton Picker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="clicker-container">
+        <h1>Cotton Picker</h1>
+        <p id="score">Zebrana bawełna: <span id="count">0</span></p>
+        <p id="level">Level: <span id="current-level">1</span></p>
+        <p id="experience">XP: <span id="xp">0</span></p>
+        <img id="clicker-btn" src="BTC.png" alt="Click me!" onclick="clickButton()">
+        <button id="autoclicker-btn" onclick="buyAutoclicker()">Kup pracownika (koszt: 10)</button>
+        <button id="double-click-btn" onclick="buyDoubleClick()">Kup nowe pole (koszt: 20)</button>
+        <button id="triple-click-btn" onclick="buyTripleClick()">Kup kombajn (koszt: 30)</button>
+        <button id="super-click-btn" onclick="buySuperClick()">Kup bat(koszt: 50)</button>
+        <button id="time-warp-btn" onclick="buyTimeWarp()">Kup małego czarnucha (koszt: 100)</button>
+        <button id="quantum-leap-btn" onclick="buyQuantumLeap()">Kup wielkiego nyggusa (koszt: 200)</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

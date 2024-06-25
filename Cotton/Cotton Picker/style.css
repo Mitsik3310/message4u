@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    background-image: url('BD.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#clicker-container {
+    text-align: center;
+}
+
+
+
+
+#clicker-btn {
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    animation: continuous-click-animation 1s infinite ease-in-out;
+    position: relative;
+    top: -10%;
+    left: 47%;
+}
+@keyframes continuous-click-animation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+#clicker-btn {
+    
+}
+#clicker-btn:active {
+    animation: click-animation 0.2s ease-in-out;
+}
+
+/* Style for the autoclicker, double click, triple click, super click, time warp, and quantum leap buttons */
+#autoclicker-btn,
+#double-click-btn,
+#triple-click-btn,
+#super-click-btn,
+#time-warp-btn,
+#quantum-leap-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#autoclicker-btn:hover,
+#double-click-btn:hover,
+#triple-click-btn:hover,
+#super-click-btn:hover,
+#time-warp-btn:hover,
+#quantum-leap-btn:hover {
+    background-color: #ddd;
+}
+
