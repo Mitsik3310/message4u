@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #background {
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    canvas {
+      display: block;
+    }
+
+    #info {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .message {
+      position: fixed;
+      top: 70%;
+      right: 40%;
+      padding: 10px 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 1px solid #ccc;
+      display: none;
+      z-index: 999;
+    }
+  </style>
+  <title>Farming simulator 1700</title>
+</head>
+<body>
+  <div id="background"></div>
+  <canvas id="canvas"></canvas>
+  <div id="info">
+    <p>Bawełna zebrana: <span id="cotton-counter">0</span></p>
+    <p>Wydajność: <span id="efficiency">1.0</span></p>
+  </div>
+  <div id="message" class="message"></div>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const spaceship = {
+      x: canvas.width / 2,
+      y: canvas.height / 2,
+      radius: 80,
+      dx: 3,
+      dy: 3,
+      image: new Image()
+    };
+
+    spaceship.image.src = 'nig.png';
+
+    function drawSpaceship() {
+      ctx.drawImage(spaceship.image, spaceship.x - spaceship.radius, spaceship.y - spaceship.radius, spaceship.radius * 2, spaceship.radius * 2);
+    }
+
+    function updateSpaceship() {
+      spaceship.x += spaceship.dx;
+      spaceship.y += spaceship.dy;
+
+      if (spaceship.x + spaceship.radius > canvas.width || spaceship.x - spaceship.radius < 0) {
+        spaceship.dx = -spaceship.dx;
+      }
+
+      if (spaceship.y + spaceship.radius > canvas.height || spaceship.y - spaceship.radius < 0) {
+        spaceship.dy = -spaceship.dy;
+      }
+    }
+
+    function animateSpaceship() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawSpaceship();
+      updateSpaceship();
+      requestAnimationFrame(animateSpaceship);
+    }
+
+    animateSpaceship(); 
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      spaceship.x = canvas.width / 2;
+      spaceship.y = canvas.height / 2;
+    });
+
+    let cottonCounter = 0;
+    let efficiency = 1.0;
+    let workerSpeed = 5;
+
+    const cottonCounterDisplay = document.getElementById('cotton-counter');
+    const efficiencyDisplay = document.getElementById('efficiency');
+    const messageDisplay = document.getElementById('message');
+
+    setInterval(() => {
+      const increaseAmount = Math.floor(Math.random() * 100 + 1) * efficiency;
+      cottonCounter += increaseAmount;
+      cottonCounterDisplay.textContent = Math.floor(cottonCounter);
+
+
+    }, workerSpeed * 1000);
+
+    let efficiencyTimeout;
+    window.addEventListener('mousedown', () => {
+      efficiency += 0.1;
+      efficiencyDisplay.textContent = efficiency.toFixed(1);
+
+      clearTimeout(efficiencyTimeout);
+      efficiencyTimeout = setTimeout(() => {
+        efficiency -= 0.1;
+        efficiencyDisplay.textContent = efficiency.toFixed(1);
+      }, 10000);
+
+      showMessage('Używasz bata. +0.1 do wydajności na 10 sekund');
+    });
+
+    function showMessage(msg) {
+      messageDisplay.textContent = msg;
+      messageDisplay.style.display = 'block';
+      setTimeout(() => {
+        messageDisplay.style.display = 'none';
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
